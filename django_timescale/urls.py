@@ -15,7 +15,9 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from farms import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('go/', views.CreateSensorReadingView.as_view())
 ]
