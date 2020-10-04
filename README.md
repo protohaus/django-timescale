@@ -25,3 +25,10 @@ If you only have Python 3.7 installed, change the definition in Pipfile from `py
 ### Python manage.py not executing
 
 On Windows run `py manage.py` to execute the `manage.py` commands.
+
+### Error on migration with compress_segmentby command
+
+If the following error is thrown during a migration, check and update the column name:  `django.db.utils.ProgrammingError: column "peripheral_component" specified in option timescaledb.compress_segmentby does not exist`. Connect to the database server with the above `psql` command, connect to the database with `\c <database_name>`, list the tables with `\dt` and show the table schema of the table to be converterd to a hypertable with `\d <table_name>`. Sometimes foreign keys have `_id` appended to their column name. In this example the variables are
+
+- database_name: sensors
+- table_name: farms_sensorreading
